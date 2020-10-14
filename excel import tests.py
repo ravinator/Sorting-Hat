@@ -9,5 +9,4 @@ vragen = vragen.applymap(str)
 #vragen = str(vragen.split('\n'))
 for vraag in vragen:
     print(vraag)
-#ugay
 
