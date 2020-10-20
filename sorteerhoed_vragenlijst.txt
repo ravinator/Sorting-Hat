@@ -1,0 +1,84 @@
+1. Ik ben creatief gelegd.
+A. Ja
+B. Beetje
+C. Nee
+
+2. Welk van de volgende eigenschappen past het best bij jou?
+A. Creatief
+B. Analist
+C. Organisatie
+D. Probleemoplossend
+
+3. Ik ben kritisch naar mijn eigen werk.
+A. Ja ik ben altijd aan het denken of ik mijn werk kan verbeteren.
+B. Ja, ik denk wel is kritisch over mijn werk na.
+C. Nee, ik houd mijzelf er niet mee bezig.
+D. Nee, mijn werk is perfect.
+
+4. Lijkt het je leuk om een computernetwerk te simuleren?
+A. Ja
+B. Beetje 
+C. nee 
+
+5. Lijkt het je interresant om van een laptop malware af te halen?
+A. Ja, vooral de malware vind ik enorm interresant om mee te werken.
+B. Ja, ik vind het erg leuk om met hardware bezig te zijn.
+C. Ik heb hier liever niet mee te maken.
+
+6. Welk vak vind je het leukst?
+A. IIPR
+B. IARCH
+C. INET
+D. IIWIS
+
+7. Hou je van wiskunde?
+A. Ik vind het leuker om een grote vraag probleemoplossend te kunnen beantwoorden.
+B. Ik vind het leuker om functies te maken en data te managen op een makkelijke manier.
+C. Ik haat wiskunde en heb hier liever nooit meer mee te maken.
+
+8. Heb je wel eens een game gespeeld en gedacht: ik kan dit beter maken?
+A. Ja
+B. Beetje 
+C. nee
+
+9. Welk van de onderstaande zinnen past het meest bij jou?
+A. Ik vind het leuk om data te organiseren in een tabel om de resultaten te zien.
+B. Ik vind het interessant om een computernetwerk te bouwen.
+C. Ik vind het design van de applicatie leuk om te ontwerpen.
+D. Ik vind het leuk om een programmeertaal te leren te begrijpen.
+
+10. Welk van de volgende onderwerpen heeft jouw meeste interesse?
+A. Hardware
+B. Software
+C. Bakken met data
+D. Netwerkstructuren
+
+11. Heeft het overzichtelijker maken van veel data jouw interesse?
+A. Ja, door middel van mijn eigen code
+B. Ja, door middel van al bestaande programma's die het overzichtelijk kunnen laten zien
+C. Nee, ik maak liever de data
+D. Nee, ik doe liever niets met al die data
+
+12. Ik kijk graag dieper op informatie in om patronen te zien?
+A. Ja
+B. Beetje
+C. nee
+
+13. Vind je het interessant om criminele activiteiten te volgen en mee bezig te zijn?
+A. Ja, ik ben geinterreseert in hoe hackers werken en hoe ik dat zelf zou kunnen doen.
+B. Ja, ik vind het interresant om te kijken of mensen de wet volgen op het internet.
+C. Nee, ik houd mezelf liever niet bezig met de juridische kant van de IT voor mijn eigen veiligheid.
+D. Nee, het interreseert mij niet zonder enige speicale reden.
+
+14. Vind je het leuk om een oplossing te verzinnen voor een probleem en die dan ook uit te werken?
+A. Ja, ik vind het heerlijk om lang bezig te zijn met een probleem met een werkend resultaat.
+B. Ja, ik vind het leuk dat niet alles in 1 keer werkend is en dat ik meer mee aan de slag moet.
+C. Nee, ik heb liever dat alles in 1 keer werkt.
+D. Nee, als ik een tijdje bezig ben met een oplossing te bedenken en als het niet werkt geef ik sneller op.
+
+15. Heb je zelf al een voorkeur voor een specialisatie?
+A. Ja, Forensisch ICT
+B. Ja, Software engineering
+C. Ja, Business and data management
+D. Ja, Interactieve technologie
+E. Nee, ik heb nog geen voorkeur
