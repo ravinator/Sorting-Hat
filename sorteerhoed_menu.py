@@ -62,10 +62,10 @@ def vraag_en_antwoord(data):
         # Puntentelling
         puntenreeks = puntensysteem(antwoord, vraagnummer)
         vraagnummer = vraagnummer + 1
-        iat = iat + puntenreeks[0]
-        bdam = bdam + puntenreeks[1]
-        se = se + puntenreeks[2]
-        fict = fict + puntenreeks[3]
+        iat += puntenreeks[0]
+        bdam += puntenreeks[1]
+        se += puntenreeks[2]
+        fict += puntenreeks[3]
 
         # Systeem zodat het gekozen antwoord ook bij de laatste uitslag tonen optie staat
         terugblik = ov_antwoord[antwoord]

@@ -11,7 +11,6 @@ pygame.init()
 pygame.font.init()
 pygame.mixer.init()
 
-
 # -----------------------------
 # Defining global variables
 # -----------------------------
@@ -21,6 +20,10 @@ pygame.mixer.init()
 game_state = "splash"
 q_answered = True
 q_count = 1
+iat = 0
+bdam = 0
+se = 0
+fict = 0
 
 # Window & Cursor
 icon = pygame.image.load('./image/window/goose_communist_32px.png')
@@ -32,10 +35,10 @@ screen = pygame.display.set_mode((1280, 720))
 bg_splash = pygame.image.load('./image/background/bg_splash.png')
 bg_menu = pygame.image.load('./image/background/bg_menu.jpg')
 bg_quiz = pygame.image.load('./image/background/bg_quiz.jpg')
-bg_result = [pygame.image.load('./image/background/bg_result_se.jpg'),
-             pygame.image.load('./image/background/bg_result_iat.jpg'),
-             pygame.image.load('./image/background/bg_result_fict.jpg'),
-             pygame.image.load('./image/background/bg_result_bdam.jpg')]
+bg_result = [pygame.image.load('./image/background/bg_result_iat.jpg'),
+             pygame.image.load('./image/background/bg_result_bdam.jpg'),
+             pygame.image.load('./image/background/bg_result_se.jpg'),
+             pygame.image.load('./image/background/bg_result_fict.jpg')]
 btn_menu = pygame.image.load('./image/button/btn_menu.png')
 btn_menu_hover = pygame.image.load('./image/button/btn_menu_hover.png')
 btn_quiz = pygame.image.load('./image/button/btn_quiz.png')
@@ -89,6 +92,31 @@ def init():
     pygame.display.set_caption(title)
     pygame.display.set_icon(icon)
 
+def vragen_ophalen(vragen):
+    with open(vragen)as lees:
+        text = lees.read()
+    return(text)
+
+def puntensysteem(antwoord, vraagnummer):
+    systeem = {1: {'A': [2, 0, 0, 0], 'B': [1, 0, 0, 0], 'C': [0, 0, 0, 0]},
+               2: {'A': [2, 0, 0, 0], 'B': [0, 2, 0, 0], 'C': [0, 0, 0, 2], 'D': [0, 0, 2, 0]},
+               3: {'A': [2, 0, 0, 0], 'B': [1, 0, 0, 0], 'C': [0, 0, 0, 0], 'D': [-1, 0, 0, 0]},
+               4: {'A': [0, 0, 0, 2], 'B': [0, 0, 0, 1], 'C': [0, 0, 0, 0]},
+               5: {'A': [0, 0, 0, 2], 'B': [2, 0, 0, 0], 'C': [0, 0, 0, 0]},
+               6: {'A': [0, 0, 2, 0], 'B': [2, 0, 0, 0], 'C': [0, 0, 0, 2], 'D': [0, 2, 0, 0]},
+               7: {'A': [0, 0, 2, 0], 'B': [0, 2, 0, 0], 'C': [0, 0, 0, 0]},
+               8: {'A': [0, 0, 2, 0], 'B': [0, 0, 1, 0], 'C': [0, 0, 0, 0]},
+               9: {'A': [0, 2, 0, 0], 'B': [0, 0, 0, 2], 'C': [2, 0, 0, 0], 'D': [0, 0, 2, 0]},
+               10: {'A': [2, 0, 0, 0], 'B': [0, 0, 2, 0], 'C': [0, 2, 0, 0], 'D': [0, 0, 0, 2]},
+               11: {'A': [0, 1, 0, 0], 'B': [0, 2, 0, 0], 'C': [0, 0, 0, 0], 'D': [0, -1, 0, 0]},
+               12: {'A': [0, 2, 0, 0], 'B': [0, 1, 0, 0], 'C': [0, 0, 0, 0]},
+               13: {'A': [0, 0, 0, 2], 'B': [0, 0, 0, 1], 'C': [0, 0, 0, 0], 'D': [0, 0, 0, -1]},
+               14: {'A': [0, 0, 2, 0], 'B': [0, 0, 1, 0], 'C': [0, 0, 0, 0], 'D': [0, 0, -1, 0]},
+               15: {'A': [0, 0, 0, 2], 'B': [0, 0, 2, 0], 'C': [0, 2, 0, 0], 'D': [2, 0, 0, 0], 'E': [0, 0, 0, 0]}
+               }
+    vraagnummer -= 1
+    punten = systeem[vraagnummer][antwoord]
+    return punten
 
 def draw_buttons(btn_list, event):
     for button in btn_list:
@@ -106,6 +134,11 @@ def draw_buttons(btn_list, event):
 def onclickAction(btn):
     global game_state
     global q_answered
+    global q_count
+    global iat
+    global bdam
+    global se
+    global fict
 
     if game_state == "menu":
         if btn.id == 'start':
@@ -116,6 +149,21 @@ def onclickAction(btn):
             pygame.quit()
             sys.exit()
     elif game_state == "quiz":
+        if btn.id == 0:
+            antwrd = 'A'
+        if btn.id == 1:
+            antwrd = 'B'
+        if btn.id == 2:
+            antwrd = 'C'
+        if btn.id == 3:
+            antwrd = 'D'
+        if btn.id == 4:
+            antwrd = 'E'
+        puntenreeks = puntensysteem(antwrd,q_count)
+        iat += puntenreeks[0]
+        bdam += puntenreeks[1]
+        se += puntenreeks[2]
+        fict += puntenreeks[3]
         q_answered = True
     elif game_state == "result":
         game_state = "menu"
@@ -152,18 +200,23 @@ def main():
             screen.blit(cursor, cursor_rect)
 
         if game_state == "quiz":
-            questions = {
-                1: "Question 1",
-                2: "Question 2",
-                3: "Question 3",
-                4: "Question 4"
-            }
-            answers = {
-                1: ["Answer 1", "Answer 2"],
-                2: ["Answer 1", "Answer 2", "Answer 3"],
-                3: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-                4: ["Answer 1", "Answer 2", "Answer 3", "Answer 4", "Answer 5"]
-            }
+            vragenlijst = vragen_ophalen('sorteerhoed_vragenlijst.txt')
+            vragenlijst = vragenlijst.split('\n\n')
+            vraagnummer = 0
+            questions = {}
+            answers = {}
+            for vraag in vragenlijst:
+                vraagnummer=vraagnummer+1
+                split_vraag = vraag.split('\n')
+                questions[vraagnummer]=split_vraag[0]
+                split_vraag.remove(split_vraag[0])
+                answers[vraagnummer] = split_vraag
+            #questions = {
+            #    1: "Question 1",
+            #}
+            #answers = {
+            #    1: ["Answer 1", "Answer 2","test 3"],
+            #}
             btn_locations = [(460, 315), (835, 315), (460, 420), (835, 420), (655, 525)]
 
             global q_answered
@@ -192,8 +245,19 @@ def main():
                 screen.blit(text, (640 - int(font.size(questions[q_count - 1])[0] / 2), 120))
 
         if game_state == "result":
+            verdomme = 0
             screen.fill((255, 255, 255))
-            screen.blit(bg_result[0], (0, 0))
+            if iat > bdam and iat > se and iat > fict:
+                verdomme = 0
+            elif bdam > iat and bdam > se and bdam > fict:
+                verdomme = 1
+            elif se > iat and se > bdam and se > fict:
+                verdomme = 2
+            elif fict > iat and fict > bdam and fict > se:
+                verdomme = 3
+            #else:
+            #    resultaat = 4
+            screen.blit(bg_result[verdomme], (0, 0))
             btn_list_result = [Button('back', btn_menu, btn_menu_hover, 'Back to Menu', 18, (570, 600))]
             draw_buttons(btn_list_result, event)
             screen.blit(cursor, cursor_rect)
