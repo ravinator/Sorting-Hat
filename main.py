@@ -23,23 +23,23 @@ q_answered = True
 q_count = 1
 
 # Window & Cursor
-icon = pygame.image.load('./image/goose_communist_32px.png')
-cursor = pygame.image.load('./image/wand_black_64px.png')
+icon = pygame.image.load('./image/window/goose_communist_32px.png')
+cursor = pygame.image.load('./image/window/wand_black_64px.png')
 title = "Sorteerhoed --- AlphenseFederatie\u2122"
 screen = pygame.display.set_mode((1280, 720))
 
 # Images
-bg_splash = pygame.image.load('./image/bg_splash.png')
-bg_menu = pygame.image.load('./image/bg_menu.jpg')
-bg_quiz = pygame.image.load('./image/bg_quiz.jpg')
-bg_result = [pygame.image.load('./image/bg_result_se.jpg'),
-             pygame.image.load('./image/bg_result_iat.jpg'),
-             pygame.image.load('./image/bg_result_fict.jpg'),
-             pygame.image.load('./image/bg_result_bdam.jpg')]
-btn_menu = pygame.image.load('./image/btn_menu.png')
-btn_menu_hover = pygame.image.load('./image/btn_menu_hover.png')
-btn_quiz = pygame.image.load('./image/btn_quiz.png')
-btn_quiz_hover = pygame.image.load('./image/btn_quiz_hover.png')
+bg_splash = pygame.image.load('./image/background/bg_splash.png')
+bg_menu = pygame.image.load('./image/background/bg_menu.jpg')
+bg_quiz = pygame.image.load('./image/background/bg_quiz.jpg')
+bg_result = [pygame.image.load('./image/background/bg_result_se.jpg'),
+             pygame.image.load('./image/background/bg_result_iat.jpg'),
+             pygame.image.load('./image/background/bg_result_fict.jpg'),
+             pygame.image.load('./image/background/bg_result_bdam.jpg')]
+btn_menu = pygame.image.load('./image/button/btn_menu.png')
+btn_menu_hover = pygame.image.load('./image/button/btn_menu_hover.png')
+btn_quiz = pygame.image.load('./image/button/btn_quiz.png')
+btn_quiz_hover = pygame.image.load('./image/button/btn_quiz_hover.png')
 
 # Sounds
 sound_goose = pygame.mixer.Sound('./sound/goose.ogg')
@@ -172,6 +172,7 @@ def main():
 
             if q_answered and q_count > len(questions):
                 game_state = "result"
+                q_count = 1
             elif q_answered and q_count <= len(questions):
                 btn_list_quiz = []
                 for a in answers[q_count]:
